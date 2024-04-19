@@ -5,10 +5,10 @@ Luminescent BioSensor Analysis
 https://drive.google.com/file/d/16YoRcfn2EU35itPo5yYxtPmKU9CwhYLT/view?usp=sharing<br />
 https://drive.google.com/file/d/1zJyzJO8PBn4ZOl0Dd_SQ4bUSEPTAY2xF/view?usp=sharing<br />
 
-# Video Demo of App
+# Working of App
+![App_Demo](https://github.com/faisalnazir1213/Scentinel/assets/66552427/a5c7b491-dbb9-49b3-aa06-1b96dd588ee3)
 
 
-https://github.com/faisalnazir1213/Scentinel/assets/66552427/cc666f9b-a2d5-4d21-ab2d-b82483f7b696
 
 
 
