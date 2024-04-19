@@ -1,7 +1,7 @@
 # Scentinel
 Luminescent BioSensor
 
-# App Requirements:<br />
+# App Requirements<br />
 
 •	Android platform<br />
 •	Access to media files<br />
