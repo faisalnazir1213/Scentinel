@@ -30,6 +30,7 @@ https://github.com/stardist/stardist/
 
 # Buildozer
 https://buildozer.readthedocs.io/en/latest/quickstart.html
+https://buildozer.readthedocs.io/en/latest/installation.html
 
 # Kivy 
 https://kivy.org/doc/stable/guide/basic.html
