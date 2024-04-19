@@ -89,7 +89,6 @@ def process_image():
         # Convert image to 16-bit
         image1 = image
         image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-        #image=cv2.bilateralFilter(image, 9, 75, 75)
         #maual Opperation
         brightness = 1.5
         # Adjusts the contrast by scaling the pixel values by 2.3 
