@@ -3,6 +3,7 @@ Luminescent BioSensor Analysis
 
 # Apk Files
 https://drive.google.com/file/d/16YoRcfn2EU35itPo5yYxtPmKU9CwhYLT/view?usp=sharing<br />
+https://drive.google.com/file/d/1zJyzJO8PBn4ZOl0Dd_SQ4bUSEPTAY2xF/view?usp=sharing<br />
 
 
 # App Requirements<br />
