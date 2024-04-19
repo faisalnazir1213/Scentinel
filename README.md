@@ -25,13 +25,13 @@ Luminescent BioSensor Analysis
 
 # Further details of libraries and modules
 
-Code is written in Python using the kivy library and flask, built on Linux using Buildozer, and the image segmentation part is performed on the server (Azure)
+Code is written in Python using the kivy library and Flask, built on Linux using Buildozer, and the image segmentation part is performed on the server (Azure)
 
 # Image Segmentation
 https://github.com/stardist/stardist/
 
 # Buildozer
-https://buildozer.readthedocs.io/en/latest/quickstart.html
+https://buildozer.readthedocs.io/en/latest/quickstart.html  <br />
 https://buildozer.readthedocs.io/en/latest/installation.html
 
 # Kivy 
