@@ -1,0 +1,12 @@
+pip==22.0.0
+opencv-contrib-python-headless
+tensorflow==2.13.0
+matplotlib==3.5.1
+stardist
+csbdeep
+scikit-image==0.19.2
+numpy==1.22
+pandas==1.4.2
+Flask==3.0.0
+scikit-learn==1.0.2
+Werkzeug
