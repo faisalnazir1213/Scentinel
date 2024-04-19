@@ -2,6 +2,7 @@
 Luminescent BioSensor
 
 **#App Requirements:<br />**
+
 •	Android platform<br />
 •	Access to media files<br />
 •	Internet Connectivity<br />
@@ -21,6 +22,10 @@ Luminescent BioSensor
 
 <img width="488" alt="Layout" src="https://github.com/faisalnazir1213/Scentinel/assets/66552427/efc473a9-5feb-4d12-8b1d-bc5a579b997b">
 
+
+Further details of libraries and modules used
+**#Image Segmentation**
+https://github.com/stardist/stardist/
 
 # Buildozer
 https://buildozer.readthedocs.io/en/latest/quickstart.html
