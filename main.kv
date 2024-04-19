@@ -1,0 +1,81 @@
+#:kivy 2.0.0
+
+
+BoxLayout:
+    orientation: 'vertical'
+
+    Button:
+        text: 'Enter Concentrations'
+        on_press: app.concentrations(self)
+    
+    Button:
+        text: 'create folder'
+        on_release: app.create_folder_click()    
+
+    Image:
+        id: image_display
+        size_hint: (1, 1)
+        allow_stretch: True
+        keep_ratio: True
+
+    Button:
+        text: 'Choose Image'
+        size_hint: (0.3, 0.1)
+        on_release: app.open_file_chooser(self)
+    
+    Button:
+        text: 'Show Table Data'
+        size_hint: (0.3, 0.1)
+        on_release: app.show_table_data(self)
+
+    Button:
+        text: 'Submit'
+        size_hint: (0.3, 0.1)
+        on_press: app.submit_concentrations(self)
+
+    TextInput:
+            id: url_input
+            text: ''
+            multiline: False
+            size_hint: 0.3, 0.1
+
+        Label:
+            text: 'Enter URL:'
+            size_hint: 0.3, 0.1
+    
+    BoxLayout:
+        orientation: 'horizontal'
+
+        Label:
+            text: "Enter unknown object number:"
+        TextInput:
+            id: unknown_object_input
+            text: ''
+            multiline: False
+# Adding Label, Button to popup 
+<Popups>: 
+      
+    Label: 
+        text: "Submit"
+        size_hint: 0.6, 0.2
+        pos_hint: {"x":0.2, "top":1} 
+  
+    Button: 
+        text: "Close the popup"
+        # set size of the button 
+        size_hint: 1, 0.4
+        # set position of the button   
+        pos_hint: {"x":0, "y":0.1} 
+        
+<MyPermReqPopup@Popup>:
+    auto_dismiss: False
+    on_dismiss: app.popup_close()
+    title: 'Please grant storage permission, then launch app again'
+    size_hint: (1, 0.3)
+    BoxLayout:
+        size: root.width, root.height
+        Button:
+            text: 'OK'
+            on_release: root.dismiss()
+
+        
