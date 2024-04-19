@@ -1,4 +1,4 @@
-#app is okay for calibration based sensor, if you want to for kinetics or reaction time studies modifications are required.
+
 import cv2
 from matplotlib import pyplot as plt
 from networkx import selfloop_edges
@@ -11,7 +11,6 @@ from flask import Flask, app, request, jsonify, send_file, url_for
 from werkzeug.utils import secure_filename
 import os
 from flask import send_file, abort
-
 
 app = Flask(__name__)
 
