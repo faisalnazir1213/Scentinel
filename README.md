@@ -6,7 +6,7 @@ https://drive.google.com/file/d/16YoRcfn2EU35itPo5yYxtPmKU9CwhYLT/view?usp=shari
 https://drive.google.com/file/d/1zJyzJO8PBn4ZOl0Dd_SQ4bUSEPTAY2xF/view?usp=sharing<br />
 
 # Working of App
-After loading image, it took some seconds to process and display the image
+After loading the image, it took some seconds to process and display back the image
 
 ![App_Demo](https://github.com/faisalnazir1213/Scentinel/assets/66552427/a5c7b491-dbb9-49b3-aa06-1b96dd588ee3)<br />
 
