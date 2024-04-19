@@ -133,7 +133,8 @@ class ImageProcessorApp(App):
 
             if not url:
                 # If the user-entered URL is empty, set the default base URL
-                base_url = "https://9881213.azurewebsites.net"
+                # Enter your server url address here
+                base_url = "https://****.azurewebsites.net"
             else:
                 # Use the user-entered URL
                 base_url = url
