@@ -1,10 +1,10 @@
 # Scentinel
 Luminescent BioSensor
 
-#App Requirements:
-•	Android platform
-•	Access to media files
-•	Internet Connectivity
+#App Requirements:<br />
+•	Android platform<br />
+•	Access to media files<br />
+•	Internet Connectivity<br />
 
 #Usage:
 
