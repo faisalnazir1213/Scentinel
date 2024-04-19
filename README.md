@@ -23,7 +23,9 @@ Luminescent BioSensor
 <img width="488" alt="Layout" src="https://github.com/faisalnazir1213/Scentinel/assets/66552427/efc473a9-5feb-4d12-8b1d-bc5a579b997b">
 
 
-# Further details of libraries and modules used
+# Further details of libraries and modules
+
+Code is written in Python using the kivy library, built on Linux using Bulldozer, and image segmentation part is performed on server (Azure)
 
 # Image Segmentation
 https://github.com/stardist/stardist/
