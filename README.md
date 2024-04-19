@@ -1,7 +1,7 @@
 # Scentinel
 Luminescent BioSensor
 
-**#App Requirements:<br />**
+# App Requirements:<br />
 
 •	Android platform<br />
 •	Access to media files<br />
@@ -24,7 +24,8 @@ Luminescent BioSensor
 
 
 Further details of libraries and modules used
-**#Image Segmentation**
+
+# Image Segmentation
 https://github.com/stardist/stardist/
 
 # Buildozer
