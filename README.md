@@ -1,5 +1,5 @@
 # Scentinel
-Luminescent BioSensor
+Luminescent BioSensor Analysis
 
 # App Requirements<br />
 
