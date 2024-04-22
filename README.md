@@ -2,7 +2,7 @@
 The Luminescent BioSensor Analysis application(Scentinel App) offers a user-friendly interface for uploading an image of a Luminescent sensor. It then analyzes the various wells' signal responses and converts them into quantitative values. Using these values, the unknown concentration of the sample is estimated through statistical analysis.
 
 # Build Tools
-Code is written in Python using the kivy library and Flask, built on Linux using Buildozer, and the image segmentation part is performed on the server (Azure)
+Code is written in Python using mainly the kivy library and Flask, built on Linux using Buildozer, and the image segmentation part is performed on the server (Azure)
 
 # Android(Apk) Files
 https://drive.google.com/file/d/16YoRcfn2EU35itPo5yYxtPmKU9CwhYLT/view?usp=sharing<br />
