@@ -40,8 +40,8 @@ Code is written in Python using the kivy library and Flask, built on Linux using
 https://github.com/stardist/stardist/
 
 # Buildozer
+https://buildozer.readthedocs.io/en/latest/installation.html <br />
 https://buildozer.readthedocs.io/en/latest/quickstart.html  <br />
-https://buildozer.readthedocs.io/en/latest/installation.html
 
 # Kivy 
 https://kivy.org/doc/stable/guide/basic.html
