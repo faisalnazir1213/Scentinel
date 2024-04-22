@@ -16,7 +16,7 @@ After loading the image, it took some seconds to process and display back the im
 •	Access to media files<br />
 •	Internet Connectivity<br />
 
-**#Usage:**
+# Usage
 
 1. Open the app and load your image.
 2. Click the ‘Show Relative Changes' button to view the values of each well
