@@ -1,5 +1,5 @@
-# Scentinel
-The Luminescent BioSensor Analysis application offers a user-friendly interface for uploading an image of a Luminescent sensor. It then analyzes the various wells' signal responses and converts them into quantitative values. Using these values, the unknown concentration of the sample can be estimated through statistical analysis.
+# Scentinel App
+The Luminescent BioSensor Analysis application(Scentinel App) offers a user-friendly interface for uploading an image of a Luminescent sensor. It then analyzes the various wells' signal responses and converts them into quantitative values. Using these values, the unknown concentration of the sample can be estimated through statistical analysis.
 
 # Android(Apk) Files
 https://drive.google.com/file/d/16YoRcfn2EU35itPo5yYxtPmKU9CwhYLT/view?usp=sharing<br />
