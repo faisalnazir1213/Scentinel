@@ -7,7 +7,7 @@ Code is written in Python using mainly the kivy library and Flask, built on Linu
 # App with your Server Address
 To test the app with a custom server(local as well) you can download it from the below link and enter the server address manually<br />
 1. One way is to deploy the Flask folder to Azure as a web app and use the custom address from Azure<br />
-2. Run the flask.py from the flask folder and use the IP address directly<br />
+2. Otherwise run the flask.py in your python IDE(from flask folder) and use the IP address directly<br />
 
 https://drive.google.com/file/d/16YoRcfn2EU35itPo5yYxtPmKU9CwhYLT/view?usp=sharing<br />
 
