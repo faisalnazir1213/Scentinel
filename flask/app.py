@@ -1,6 +1,6 @@
 
 import cv2
-from matplotlib import pyplot as plt
+#from matplotlib import pyplot as plt
 from networkx import selfloop_edges
 from stardist.models import StarDist2D
 from csbdeep.utils import normalize
