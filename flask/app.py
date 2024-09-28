@@ -7,10 +7,10 @@ from csbdeep.utils import normalize
 from skimage.measure import regionprops
 import pandas as pd
 import numpy as np
-from flask import Flask, app, request, jsonify, send_file, url_for
+from flask import Flask, app, request, jsonify, send_file, url_for, abort
 from werkzeug.utils import secure_filename
 import os
-from flask import send_file, abort
+#from flask import send_file, abort
 
 app = Flask(__name__)
 
