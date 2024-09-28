@@ -7,7 +7,7 @@ from kivy.uix.filechooser import FileChooserListView
 import pandas as pd
 import numpy as np
 from scipy.optimize import curve_fit
-from kivy.app import App
+
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
@@ -15,7 +15,7 @@ from kivy.uix.button import Button
 from kivy.uix.popup import Popup
 from kivy import platform
 from kivy.factory import Factory
-from kivy.app import App
+
 import requests
 from kivy.core.window import Window
 from android.permissions import Permission, check_permission, request_permissions
