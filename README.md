@@ -58,4 +58,5 @@ https://kivy.org/doc/stable/guide/basic.html
 # Flask to server Guide (Azure)
 https://medium.datadriveninvestor.com/deploying-flask-web-app-on-microsoft-azure-89cea17e9114
 
-
+#Python
+3.10.14(Conda)
