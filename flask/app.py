@@ -56,8 +56,7 @@ def process_image():
             dim = None
             (h, w) = image.shape[:2]
 
-            # if both the width and height are None, then return the
-            # original image
+            # if both the width and height are None, then return the original image
             if width is None and height is None:
                 return image
 
@@ -70,8 +69,7 @@ def process_image():
 
             # otherwise, the height is None
             else:
-                # calculate the ratio of the width and construct the
-                # dimensions
+                # calculate the ratio of the width and construct the dimensions
                 r = width / float(w)
                 dim = (width, int(h * r))
 
@@ -86,12 +84,12 @@ def process_image():
         else:
             pass
         
-        # Convert image to 16-bit
+        # Convert image to 16-bit grayscale
         image1 = image
         image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
         #maual Opperation
         brightness = 1.5
-        # Adjusts the contrast by scaling the pixel values by 2.3 
+        # Adjusts the contrast by scaling the pixel values
         contrast = 2 
         image = cv2.addWeighted(image, contrast, np.zeros(image.shape, image.dtype), 0, brightness) 
         #image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
@@ -99,10 +97,10 @@ def process_image():
         blue_channel=image
         blue_channel_norm = normalize(blue_channel, 1, 99.8, axis=None)
 
-        # Load the versatile model
+        # Load the AI model
         model = StarDist2D.from_pretrained('Versatile (fluorescent nuclei)')
 
-        # Predict objects in the blue channel
+        # Predict objects
         labels, _ = model.predict_instances(blue_channel_norm,nms_thresh=0.01, prob_thresh=0.67)
 
         # Get properties of labeled objects
@@ -111,7 +109,7 @@ def process_image():
         # Create data table to store object properties
         object_table = pd.DataFrame(columns=['Object', 'Area'])
 
-        # Draw boundry around objects and label with count
+        # Draw boundry around objects and label with numbers
         for i, prop in enumerate(props):
             y1, x1, y2, x2 = prop.bbox
             x_center = int((x1 + x2) / 2)
@@ -134,7 +132,7 @@ def process_image():
             new_data = pd.DataFrame({'Object': [label],'Area': [area],'Signal': [mean_intensity]})
             object_table = pd.concat([object_table, new_data], ignore_index=True)
 
-        # Calculate difference in Signal for each object compared to the object with maximum Signal
+        # Calculate difference in Signal for each object
         max_area = object_table['Area'].max()
         object_table['Signal/Unit_Area'] = object_table['Signal'] / max_area
         object_table['Signal'] = object_table['Signal'] / max_area
