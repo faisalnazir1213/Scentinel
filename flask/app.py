@@ -51,8 +51,7 @@ def process_image():
             image = cv2.rotate(image, cv2.ROTATE_90_CLOCKWISE)
 
         def image_resize(image, width = None, height = None, inter = cv2.INTER_AREA):
-            # initialize the dimensions of the image to be resized and
-            # grab the image size
+            # initialize the dimensions of the image to be resized and grab the image size
             dim = None
             (h, w) = image.shape[:2]
 
@@ -87,7 +86,7 @@ def process_image():
         # Convert image to 16-bit grayscale
         image1 = image
         image = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
-        #maual Opperation
+        #manual Operation
         brightness = 1.5
         # Adjusts the contrast by scaling the pixel values
         contrast = 2 
