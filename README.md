@@ -12,7 +12,7 @@ To test the app with a custom server(local as well) you can download it from the
 https://drive.google.com/file/d/16YoRcfn2EU35itPo5yYxtPmKU9CwhYLT/view?usp=sharing<br />
 
 # Android(Apk) Files (no server address required, but the subscription will expire)
-https://drive.google.com/file/d/16YoRcfn2EU35itPo5yYxtPmKU9CwhYLT/view?usp=sharing<br />
+
 https://drive.google.com/file/d/1zJyzJO8PBn4ZOl0Dd_SQ4bUSEPTAY2xF/view?usp=sharing<br />
 
 # Working of App
@@ -60,3 +60,5 @@ https://medium.datadriveninvestor.com/deploying-flask-web-app-on-microsoft-azure
 
 #Python
 3.10.14(Conda)
+
+https://drive.google.com/file/d/16YoRcfn2EU35itPo5yYxtPmKU9CwhYLT/view?usp=sharing<br />
