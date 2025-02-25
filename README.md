@@ -49,7 +49,7 @@ d. If there is no internet connection, or if there is a server-side issue which 
 https://github.com/stardist/stardist/
 
 # Buildozer
-https://buildozer.readthedocs.io/en/latest/installation.html <br />
+#https://buildozer.readthedocs.io/en/latest/installation.html <br />
 https://buildozer.readthedocs.io/en/latest/quickstart.html  <br />
 
 # Kivy 
