@@ -47,7 +47,7 @@ d. If there is no internet connection, or if there is a server-side issue which 
 <!-- 
 # Image Segmentation
 https://github.com/stardist/stardist/
---->
+-->
 # Buildozer
 #https://buildozer.readthedocs.io/en/latest/installation.html <br />
 https://buildozer.readthedocs.io/en/latest/quickstart.html  <br />
@@ -61,4 +61,5 @@ https://medium.datadriveninvestor.com/deploying-flask-web-app-on-microsoft-azure
 #Python
 3.10.14(Conda)
 
-https://drive.google.com/file/d/16YoRcfn2EU35itPo5yYxtPmKU9CwhYLT/view?usp=sharing<br />
+<!-- https://drive.google.com/file/d/16YoRcfn2EU35itPo5yYxtPmKU9CwhYLT/view?usp=sharing<br /> 
+-->
