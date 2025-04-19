@@ -23,7 +23,7 @@ After loading the image, it took some seconds to process and display back the im
 # App Requirements<br />
 
 •	Android platform<br />
-•	Access to media files<br />
+•	Access to media files(higer versions of android requires manual appraoch to grant permissions<br />
 •	Internet Connectivity<br />
 
 # Usage
