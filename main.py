@@ -1,13 +1,14 @@
 import math
 import kivy
 from kivy.animation import Clock
+from kivy.clock import Clock
 from kivy.app import App
 from kivy.uix.image import AsyncImage, Image
 from kivy.uix.filechooser import FileChooserListView
 import pandas as pd
 import numpy as np
 from scipy.optimize import curve_fit
-
+from kivy.app import App
 from kivy.uix.boxlayout import BoxLayout
 from kivy.uix.label import Label
 from kivy.uix.textinput import TextInput
@@ -15,19 +16,27 @@ from kivy.uix.button import Button
 from kivy.uix.popup import Popup
 from kivy import platform
 from kivy.factory import Factory
-
+from kivy.app import App
 import requests
 from kivy.core.window import Window
-from android.permissions import Permission, check_permission, request_permissions
+from plyer import filechooser
+from android.permissions import request_permissions, check_permission, Permission
 from android.storage import primary_external_storage_path
 from kivy.uix.filechooser import FileChooserIconLayout
-from jnius import autoclass, PythonJavaClass, java_method
-from kivy.lang import Builder
-from plyer import filechooser
-import shutil
+from jnius import autoclass, PythonJavaClass, java_method, cast
+from kivy.utils import platform
+
 from kivy.network.urlrequest import UrlRequest
 from kivy.graphics import Color, Rectangle
 import os
+
+
+if platform == "android":
+    PythonActivity = autoclass('org.kivy.android.PythonActivity')
+    ContentResolver = autoclass('android.content.ContentResolver')
+    BitmapFactory = autoclass('android.graphics.BitmapFactory')
+    InputStream = autoclass('java.io.InputStream')
+    Bitmap = autoclass('android.graphics.Bitmap')
 
 kivy.require('2.0.0')
 
@@ -37,35 +46,23 @@ class ImageProcessorApp(App):
     
     def build(self):
 
-
-        root_folder = self.user_data_dir
-        uploads_folder = os.path.join(root_folder, 'uploads')
-
-        # Create the uploads folder if it doesn't exist
-        os.makedirs(uploads_folder, exist_ok=True)
-        
-        self.title = 'Image Processor App'
+        self.title = 'Scentinel'
         self.query_layout = BoxLayout(orientation='vertical')
         layout = BoxLayout(orientation='vertical')  
          
         # Image display
         image_layout = BoxLayout(size_hint=(1, 1))
-        #self.image_display = Image(size_hint=(1, 1), allow_stretch=True, keep_ratio=True)
         self.image_display = AsyncImage(allow_stretch=True, keep_ratio=True)
         image_layout.add_widget(self.image_display)
         layout.add_widget(image_layout)
 
         self.concentration_display = Label(text="", size_hint=(1, 0.1), height=50, markup=True, bold=True)
         layout.add_widget(self.concentration_display)
-
-        # URL input for developer only (unhash the following lines to enable the URL input)
+        
+        # URL input only for developer mode
         self.url_input = TextInput(text='', multiline=False, size_hint=(1, 0.1))
-        #url_label = Label(text="Enter URL of Server:", size_hint=(1, 0.1))
-        #url_layout = BoxLayout(orientation='vertical', size_hint=(1, 0.2))
-        #url_layout.add_widget(url_label)
-        #url_layout.add_widget(self.url_input)
-        #layout.add_widget(url_layout)
 
+        # Add the URL input to the layout
         button = Button(text='LOAD IMAGE', size_hint=(1, 0.1), markup=True, bold=True)
         button.bind(on_press=self.open_native_gallery)
         layout.add_widget(button)
@@ -94,91 +91,128 @@ class ImageProcessorApp(App):
         return layout
         
     def open_native_gallery(self, instance):
+        """
+        Open the native gallery and handle permissions across Android versions.
+        """
+        # Get Android version
+        VERSION = autoclass('android.os.Build$VERSION')
+        api_level = VERSION.SDK_INT
+
+        # Determine permission needed
+        if api_level >= 33:
+            required_permission = Permission.READ_MEDIA_IMAGES
+        else:
+            required_permission = Permission.READ_EXTERNAL_STORAGE
+
         def handle_selection(selection):
             if selection:
                 image_path = selection[0]
                 Clock.schedule_once(lambda dt: self.load_image(None, image_path))
 
         def request_permissions_and_open_picker():
-            request_permissions([Permission.READ_EXTERNAL_STORAGE, Permission.WRITE_EXTERNAL_STORAGE],
-                                self.handle_permissions)
+            request_permissions(
+                [required_permission],
+                lambda permissions, grant_results: on_permission_result(grant_results, handle_selection)
+            )
 
-        def bind_on_submit(selection):
-            if check_permission(Permission.READ_EXTERNAL_STORAGE) and check_permission(Permission.WRITE_EXTERNAL_STORAGE):
-                Clock.schedule_once(lambda dt: self.load_image(None, selection[0]))
+        def on_permission_result(grant_results, on_permission_granted):
+            if all(grant_results):
+                filechooser.open_file(
+                    title='Choose Image',
+                    filters=[("Image files", "*.png;*.jpg;*.jpeg")],
+                    on_selection=on_permission_granted
+                )
             else:
-                request_permissions_and_open_picker()
+                print("Permissions not granted.")
 
-        #request_permissions_and_open_picker()
-        filechooser.open_file(title='<b>CHOOSE IMAGE</b>', on_selection=bind_on_submit)
-
-    def handle_permissions(self, permissions, grant_results):
-        if all(grant_results):
-            pass  # Permissions granted, ready to open the picker
+        # Check if already granted
+        if check_permission(required_permission):
+            filechooser.open_file(
+                title='Choose Image',
+                filters=[("Image files", "*.png;*.jpg;*.jpeg")],
+                on_selection=handle_selection
+            )
         else:
-            print("Permissions not granted.")
+            request_permissions_and_open_picker()
 
-    
+
     def load_image(self, instance, selected_file, *args):
-        if selected_file:
-            image_path = selected_file
-            self.image_display.source = image_path
-            self.image_path = image_path
+        if not selected_file:
+            return
 
-            # Define the constant path
-            path = "/process_image"
+        image_path = selected_file
+        self.image_display.source = image_path
+        self.image_path = image_path
 
-            # Get the user-entered URL
-            url = self.url_input.text.strip()  # Remove extra spaces
+        # Construct full server URL
+        path = "/process_image"
+        user_url = self.url_input.text.strip()
+        base_url = user_url if user_url else "https://9881213.azurewebsites.net"
+        url = base_url + path
 
-            if not url:
-                # If the user-entered URL is empty, set the default base URL
-                # Enter your server url address here
-                base_url = "https://****.azurewebsites.net"
+        try:
+            if image_path.startswith("content://"):
+                # Use Android content resolver to read file as bytes
+                Context = autoclass("android.content.Context")
+                PythonActivity = autoclass("org.kivy.android.PythonActivity")
+                current_activity = cast("android.app.Activity", PythonActivity.mActivity)
+                content_resolver = current_activity.getContentResolver()
+                uri = autoclass("android.net.Uri").parse(image_path)
+                input_stream = content_resolver.openInputStream(uri)
+
+                ByteArrayOutputStream = autoclass("java.io.ByteArrayOutputStream")
+                byte_stream = ByteArrayOutputStream()
+                buffer_size = 1024
+                buffer = autoclass("java.lang.reflect.Array").newInstance(autoclass("java.lang.Byte").TYPE, buffer_size)
+
+                while True:
+                    length = input_stream.read(buffer)
+                    if length == -1:
+                        break
+                    byte_stream.write(buffer, 0, length)
+
+                input_stream.close()
+                file_bytes = bytearray(byte_stream.toByteArray())
+                files = {'file': ('image.jpg', file_bytes, 'image/jpeg')}
+
             else:
-                # Use the user-entered URL
-                base_url = url
+                # Path accessible via Python
+                files = {'file': open(image_path, 'rb')}
 
-            # Combine the base URL with the constant path to form the complete URL
-            url = base_url + path
-            
-            file_path = self.image_path
-            files = {'file': open(file_path, 'rb')}
+            # Send request
             response = requests.post(url, files=files)
 
             if response is None:
                 self.show_error_popup("No Response", "No response received from the server.")
-
+                return
 
             if response.status_code == 200:
                 try:
                     data = response.json()
-                    
+
                     object_data = {}
                     for row in data['object_table']:
                         object_number = row['Object']
-                        signal_area  = round(row['Signal'], 2) #use this to see signal/unit area
-                        #signal_area = round(row['Signal/Unit_Area'], 2)  #use this to see realtive change
-                        #object_data[object_number] = {'Signal': Signal, 'Signal/Unit_Area': signal_area}
-                        #object_data[object_number] = signal_area,Signal
+                        signal_area = round(row['Signal'], 2)
                         object_data[object_number] = signal_area
 
-                    # Convert object_data to a DataFrame and rename the columns to relatve change from signal/unit area
                     df = pd.DataFrame(list(object_data.items()), columns=['Object', 'Relative Change'])
                     self.object_table = df
 
                     processed_image_url = data.get('processed_image_url')
-                    processed_image_url= base_url + processed_image_url
+                    processed_image_url = base_url + processed_image_url
                     if processed_image_url:
-                        try:
-                            self.image_display.source = processed_image_url
-                        except Exception as e:
-                            self.show_error_popup("Image Display Error", f"Error displaying image: {e}")
+                        self.image_display.source = processed_image_url
                     else:
                         self.show_error_popup("No Processed Image URL", "No processed image URL received from the server.")
 
                 except ValueError:
-                        self.show_error_popup("Server Error", "Please check the URL and try again.")
+                    self.show_error_popup("Server Error", "Please check the URL and try again.")
+            else:
+                self.show_error_popup("HTTP Error", f"Status code: {response.status_code}")
+
+        except Exception as e:
+            self.show_error_popup("Error", f"Exception while loading image: {e}")
 
                     
     def show_table_data(self, instance):
