@@ -3,6 +3,9 @@
 # (str) Title of your application
 title = Scentinel Sensor
 
+# Custom prebuild hook plyer patch for downloads folder image selection
+prebuild = python prebuild.py
+
 # (str) Package name
 package.name = Scentinel_signal
 
@@ -38,15 +41,18 @@ version = 0.1
 # (list) Application requirements
 # comma separated e.g. requirements = sqlite3,kivy
 requirements = python3,kivy,kivymd,requests,scipy,pandas,numpy,android,plyer
+#requirements =python3,kivy,kivymd,requests,opencv_extras,tensorflow==2.13.0,matplotlib,stardist,csbdeep,scikit-image,numpy,pandas,scikit-learn,android,scipy,plyer,tqdm,lazy_loader
 
 # (str) Custom source folders for requirements
 # Sets custom source for any requirements with recipes
 # requirements.source.kivy = ../../kivy
 
 # (str) Presplash of the application
+#presplash.filename = %(source.dir)s/data/presplash.png
 presplash.filename = %(source.dir)s/Data/black.png
 
 # (str) Icon of the application
+#icon.filename = %(source.dir)s/data/icon.png
 icon.filename = %(source.dir)s/Data/white.png
 
 # (list) Supported orientations
@@ -95,7 +101,10 @@ fullscreen = 0
 
 # (list) Permissions
 # (See https://python-for-android.readthedocs.io/en/latest/buildoptions/#build-options-1 for all the supported syntaxes and properties)
-android.permissions = android.permission.INTERNET,android.permission.WRITE_EXTERNAL_STORAGE,android.permission.READ_EXTERNAL_STORAGE,Permission.READ_MEDIA_IMAGES,Permission.READ_MEDIA_VIDEO
+#android.permissions = INTERNET,WRITE_EXTERNAL_STORAGE,READ_EXTERNAL_STORAGE,READ_MEDIA_IMAGES,READ_MEDIA_VIDEO,CAMERA,MANAGE_EXTERNAL_STORAGE
+android.permissions = INTERNET,WRITE_EXTERNAL_STORAGE,READ_EXTERNAL_STORAGE,READ_MEDIA_IMAGES,MANAGE_EXTERNAL_STORAGE
+
+android.extra_manifest_entries = <uses-permission android:name="android.permission.MANAGE_EXTERNAL_STORAGE" tools:ignore="ScopedStorage"/>
 
 # (list) features (adds uses-feature -tags to manifest)
 #android.features = android.hardware.usb.host
@@ -201,7 +210,9 @@ android.api = 31
 #android.add_resources =
 
 # (list) Gradle dependencies to add
-#android.gradle_dependencies =
+#android.gradle_dependencies = com.android.support:appcompat-v7:28.0.0		#older versions
+
+#android.gradle_dependencies = androidx.appcompat:appcompat:1.2.0
 
 # (bool) Enable AndroidX support. Enable when 'android.gradle_dependencies'
 # contains an 'androidx' package, or any package from Kotlin source.
