@@ -4,6 +4,11 @@ The Luminescent BioSensor Analysis application(Scentinel App) offers a user-frie
 # Build Tools
 Code is written in Python using mainly the kivy library and Flask, built on Linux using Buildozer, and the image segmentation part is performed on the server (Azure)
 
+
+# Android(Apk) Files (no server address required, but the subscription will expire)
+
+https://drive.google.com/file/d/1hDGkN9szglOaik9ypATFweW9zJ-75H4P/view?usp=sharing<br />
+
 # App with your Server Address
 To test the app with a custom server(local as well) you can download it from the below link and enter the server address manually<br />
 1. One way is to deploy the Flask folder to Azure as a web app and use the custom address from Azure<br />
@@ -11,9 +16,6 @@ To test the app with a custom server(local as well) you can download it from the
 
 https://drive.google.com/file/d/1gN8H9p4lOC7P7AtP-DKNN-R80PfJFSfj/view?usp=sharing<br />
 
-# Android(Apk) Files (no server address required, but the subscription will expire)
-
-https://drive.google.com/file/d/1hDGkN9szglOaik9ypATFweW9zJ-75H4P/view?usp=sharing<br />
 
 # Working of App
 After loading the image, it took some seconds to process and display back the image
