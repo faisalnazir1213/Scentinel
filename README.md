@@ -13,7 +13,7 @@ https://drive.google.com/file/d/1gN8H9p4lOC7P7AtP-DKNN-R80PfJFSfj/view?usp=shari
 
 # Android(Apk) Files (no server address required, but the subscription will expire)
 
-https://drive.google.com/file/d/1zJyzJO8PBn4ZOl0Dd_SQ4bUSEPTAY2xF/view?usp=drive_link<br />
+https://drive.google.com/file/d/1hDGkN9szglOaik9ypATFweW9zJ-75H4P/view?usp=sharing<br />
 
 # Working of App
 After loading the image, it took some seconds to process and display back the image
